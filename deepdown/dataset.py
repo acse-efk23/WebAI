@@ -9,7 +9,7 @@ class Hdf5Dataset(Dataset):
     """
     A PyTorch Dataset class for loading data from an HDF5 file.
     """
-    
+
     def __init__(self):
         self.file_path = None
         self.transform = None
@@ -23,7 +23,7 @@ class Hdf5Dataset(Dataset):
             transform (callable, optional): A function/transform to apply to the data. Defaults to None.
         """
         self.transform = transform
-        
+
         # Check if entered data file exists
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"File {file_path} not found")

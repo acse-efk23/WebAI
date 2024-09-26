@@ -9,6 +9,7 @@ class EvaluatorClass:
     EvaluatorClass is designed to evaluate a machine learning model's performance on training and validation datasets.
     It computes various error metrics such as R-squared (R2) and Relative Absolute Error (RAE) for both datasets.
     """
+
     def __init__(self, model, train_loader, validation_loader):
 
         self.model = model
@@ -30,13 +31,12 @@ class EvaluatorClass:
         self.rae_train = 0
         self.rae_validation = 0
 
-
     def error_metrics(self):
         """
         Calculate and store error metrics for training and validation datasets.
-        This method computes the R-squared (R2) and Relative Absolute Error (RAE) 
-        metrics for both the training and validation datasets. The predictions are 
-        made using the `pressure_field` method, and the metrics are calculated 
+        This method computes the R-squared (R2) and Relative Absolute Error (RAE)
+        metrics for both the training and validation datasets. The predictions are
+        made using the `pressure_field` method, and the metrics are calculated
         using the `r2_score_numpy` and `rae_score_numpy` functions.
         The following attributes are updated:
         - r2_list_train: List of R2 scores for the training dataset.
@@ -68,7 +68,6 @@ class EvaluatorClass:
             self.r2_list_validation
         )
         self.r2_std_validation = np.std(self.r2_list_validation)
-
 
     def pressure_field(self):
         """
