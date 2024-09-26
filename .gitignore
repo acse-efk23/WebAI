@@ -1,3 +1,10 @@
+data/
+main.ipynb
+.DS_Store
+train_example.hdf5
+test_example.hdf5
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

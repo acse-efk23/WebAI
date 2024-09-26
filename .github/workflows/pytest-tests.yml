@@ -1,0 +1,25 @@
+name: run-tests
+
+on:
+  push:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Package and data setup
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest
+        pip install -e .
+
+    - name: run tests
+      run: |
+        pytest tests/
