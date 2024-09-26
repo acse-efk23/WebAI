@@ -10,3 +10,4 @@ scipy
 nbformat>=4.2.0
 ipykernel
 livelossplot
+setuptools==68.0.0
