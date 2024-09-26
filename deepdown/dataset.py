@@ -20,7 +20,8 @@ class Hdf5Dataset(Dataset):
 
         Args:
             file_path (str): The path to the dataset file.
-            transform (callable, optional): A function/transform to apply to the data. Defaults to None.
+            transform (callable, optional): A function/transform to apply to the 
+                                            data. Defaults to None.
         """
         self.transform = transform
 
@@ -40,7 +41,8 @@ class Hdf5Dataset(Dataset):
             index (int): The index of the data to load.
 
         Returns:
-            tuple: A tuple containing the input data and output data at the specified index.
+            tuple: A tuple containing the input data and 
+                   output data at the specified index.
         """
         with h5py.File(self.file_path, "r") as file:
             return file["input"][index], file["output"][index]
