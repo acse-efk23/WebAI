@@ -1,0 +1,28 @@
+title: Data Visualisation with Ediz
+
+options:
+  menu:
+    initially_pinned: True
+  plotly_theme:
+    yaxis:
+      showgrid: True
+      gridcolor: white
+
+layout:
+  - page: Front page
+    icon: home
+    content:
+      - Welcome to this website!
+
+  - page: Load Data
+    content:
+      - LoadData:
+
+  - page: Train
+    content:
+      - Train:
+
+  - page: Predict
+    content:
+      - Predict:
+      

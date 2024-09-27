@@ -73,3 +73,9 @@ class Hdf5Dataset(Dataset):
             int: The number of items in the dataset.
         """
         return self.length
+
+
+class SimDataset(Dataset):
+    # This class includes confidential information 
+    # and is not included in the repository.
+    pass

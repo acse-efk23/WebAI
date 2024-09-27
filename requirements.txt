@@ -13,3 +13,4 @@ livelossplot
 setuptools==68.0.0
 sphinx
 sphinx_rtd_theme
+webviz-config
