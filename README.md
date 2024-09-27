@@ -61,4 +61,5 @@ webviz build configuration.yaml
 ```
 
 ### Acknowledgements
+---
 The web application is built through an open source Python package developed by Equinor which can be found [here](https://github.com/equinor/webviz-config).
