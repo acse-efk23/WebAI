@@ -53,7 +53,7 @@ cd web_plugins
 pip install .
 ```
 
-8. Run the application:
+8. Run the application (viewed in local host):
 ```bash
 cd ..
 webviz preferences --browser chrome
