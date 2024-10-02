@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebAI &mdash; WebAI  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            WebAI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">WebAI</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-deepdown">Function API</a><ul>
+<li><a class="reference internal" href="#deepdown.DataLoader"><code class="docutils literal notranslate"><span class="pre">DataLoader</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.EvaluatorClass"><code class="docutils literal notranslate"><span class="pre">EvaluatorClass</span></code></a><ul>
+<li><a class="reference internal" href="#deepdown.EvaluatorClass.error_metrics"><code class="docutils literal notranslate"><span class="pre">EvaluatorClass.error_metrics()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.EvaluatorClass.pressure_field"><code class="docutils literal notranslate"><span class="pre">EvaluatorClass.pressure_field()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deepdown.Hdf5Dataset"><code class="docutils literal notranslate"><span class="pre">Hdf5Dataset</span></code></a><ul>
+<li><a class="reference internal" href="#deepdown.Hdf5Dataset.initialise"><code class="docutils literal notranslate"><span class="pre">Hdf5Dataset.initialise()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.Hdf5Dataset.load_data"><code class="docutils literal notranslate"><span class="pre">Hdf5Dataset.load_data()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deepdown.Plot2D"><code class="docutils literal notranslate"><span class="pre">Plot2D()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.Plot3D"><code class="docutils literal notranslate"><span class="pre">Plot3D()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLoss"><code class="docutils literal notranslate"><span class="pre">PlotLoss()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses"><code class="docutils literal notranslate"><span class="pre">PlotLosses</span></code></a><ul>
+<li><a class="reference internal" href="#deepdown.PlotLosses.draw"><code class="docutils literal notranslate"><span class="pre">PlotLosses.draw()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses.reset_outputs"><code class="docutils literal notranslate"><span class="pre">PlotLosses.reset_outputs()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses.send"><code class="docutils literal notranslate"><span class="pre">PlotLosses.send()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses.to_bokeh"><code class="docutils literal notranslate"><span class="pre">PlotLosses.to_bokeh()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses.to_extrema_printer"><code class="docutils literal notranslate"><span class="pre">PlotLosses.to_extrema_printer()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses.to_matplotlib"><code class="docutils literal notranslate"><span class="pre">PlotLosses.to_matplotlib()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses.to_neptune"><code class="docutils literal notranslate"><span class="pre">PlotLosses.to_neptune()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses.to_tensorboard"><code class="docutils literal notranslate"><span class="pre">PlotLosses.to_tensorboard()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses.to_tensorboard_tf"><code class="docutils literal notranslate"><span class="pre">PlotLosses.to_tensorboard_tf()</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.PlotLosses.update"><code class="docutils literal notranslate"><span class="pre">PlotLosses.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deepdown.ResNet"><code class="docutils literal notranslate"><span class="pre">ResNet</span></code></a><ul>
+<li><a class="reference internal" href="#deepdown.ResNet.forward"><code class="docutils literal notranslate"><span class="pre">ResNet.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deepdown.SimDataset"><code class="docutils literal notranslate"><span class="pre">SimDataset</span></code></a></li>
+<li><a class="reference internal" href="#deepdown.make_subplots"><code class="docutils literal notranslate"><span class="pre">make_subplots()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">WebAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">WebAI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="webai">
+<h1>WebAI<a class="headerlink" href="#webai" title="Link to this heading"></a></h1>
+<section id="synopsis">
+<h2>Synopsis:<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<p>This project includes an AI model that can provide flow simulation results less than a second while
+physics simulation takes hours.</p>
+</section>
+</section>
+<section id="module-deepdown">
+<span id="function-api"></span><h1>Function API<a class="headerlink" href="#module-deepdown" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="deepdown.DataLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">DataLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#deepdown.Dataset" title="torch.utils.data.dataset.Dataset"><span class="pre">Dataset</span></a><span class="p"><span class="pre">[</span></span><span class="pre">T_co</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sampler</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_sampler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sampler</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collate_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pin_memory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">worker_init_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiprocessing_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefetch_factor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pin_memory_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.DataLoader" title="Link to this definition"></a></dt>
+<dd><p>Data loader combines a dataset and a sampler, and provides an iterable over the given dataset.</p>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> supports both map-style and
+iterable-style datasets with single- or multi-process loading, customizing
+loading order and optional automatic batching (collation) and memory pinning.</p>
+<p>See <code class="xref py py-mod docutils literal notranslate"><span class="pre">torch.utils.data</span></code> documentation page for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference internal" href="#deepdown.Dataset" title="deepdown.Dataset"><em>Dataset</em></a>) – dataset from which to load the data.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – how many samples per batch to load
+(default: <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p></li>
+<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to have the data reshuffled
+at every epoch (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p></li>
+<li><p><strong>sampler</strong> (<em>Sampler</em><em> or </em><em>Iterable</em><em>, </em><em>optional</em>) – defines the strategy to draw
+samples from the dataset. Can be any <code class="docutils literal notranslate"><span class="pre">Iterable</span></code> with <code class="docutils literal notranslate"><span class="pre">__len__</span></code>
+implemented. If specified, <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code> must not be specified.</p></li>
+<li><p><strong>batch_sampler</strong> (<em>Sampler</em><em> or </em><em>Iterable</em><em>, </em><em>optional</em>) – like <code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code>, but
+returns a batch of indices at a time. Mutually exclusive with
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">batch_size</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code>,
+and <code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code>.</p></li>
+<li><p><strong>num_workers</strong> (<em>int</em><em>, </em><em>optional</em>) – how many subprocesses to use for data
+loading. <code class="docutils literal notranslate"><span class="pre">0</span></code> means that the data will be loaded in the main process.
+(default: <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
+<li><p><strong>collate_fn</strong> (<em>Callable</em><em>, </em><em>optional</em>) – merges a list of samples to form a
+mini-batch of Tensor(s).  Used when using batched loading from a
+map-style dataset.</p></li>
+<li><p><strong>pin_memory</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the data loader will copy Tensors
+into device/CUDA pinned memory before returning them.  If your data elements
+are a custom type, or your <code class="xref py py-attr docutils literal notranslate"><span class="pre">collate_fn</span></code> returns a batch that is a custom type,
+see the example below.</p></li>
+<li><p><strong>drop_last</strong> (<em>bool</em><em>, </em><em>optional</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to drop the last incomplete batch,
+if the dataset size is not divisible by the batch size. If <code class="docutils literal notranslate"><span class="pre">False</span></code> and
+the size of dataset is not divisible by the batch size, then the last batch
+will be smaller. (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><strong>timeout</strong> (<em>numeric</em><em>, </em><em>optional</em>) – if positive, the timeout value for collecting a batch
+from workers. Should always be non-negative. (default: <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
+<li><p><strong>worker_init_fn</strong> (<em>Callable</em><em>, </em><em>optional</em>) – If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, this will be called on each
+worker subprocess with the worker id (an int in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">num_workers</span> <span class="pre">-</span> <span class="pre">1]</span></code>) as
+input, after seeding and before data loading. (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>multiprocessing_context</strong> (<em>str</em><em> or </em><em>multiprocessing.context.BaseContext</em><em>, </em><em>optional</em>) – If
+<code class="docutils literal notranslate"><span class="pre">None</span></code>, the default <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods">multiprocessing context</a> of your operating system will
+be used. (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>generator</strong> (<em>torch.Generator</em><em>, </em><em>optional</em>) – If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, this RNG will be used
+by RandomSampler to generate random indexes and multiprocessing to generate
+<code class="docutils literal notranslate"><span class="pre">base_seed</span></code> for workers. (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>prefetch_factor</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>keyword-only arg</em>) – Number of batches loaded
+in advance by each worker. <code class="docutils literal notranslate"><span class="pre">2</span></code> means there will be a total of
+2 * num_workers batches prefetched across all workers. (default value depends
+on the set value for num_workers. If value of num_workers=0 default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+Otherwise, if value of <code class="docutils literal notranslate"><span class="pre">num_workers</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> default is <code class="docutils literal notranslate"><span class="pre">2</span></code>).</p></li>
+<li><p><strong>persistent_workers</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the data loader will not shut down
+the worker processes after a dataset has been consumed once. This allows to
+maintain the workers <cite>Dataset</cite> instances alive. (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><strong>pin_memory_device</strong> (<em>str</em><em>, </em><em>optional</em>) – the device to <code class="xref py py-attr docutils literal notranslate"><span class="pre">pin_memory</span></code> to if <code class="docutils literal notranslate"><span class="pre">pin_memory</span></code> is
+<code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">spawn</span></code> start method is used, <code class="xref py py-attr docutils literal notranslate"><span class="pre">worker_init_fn</span></code>
+cannot be an unpicklable object, e.g., a lambda function. See
+<span class="xref std std-ref">multiprocessing-best-practices</span> on more details related
+to multiprocessing in PyTorch.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">len(dataloader)</span></code> heuristic is based on the length of the sampler used.
+When <code class="xref py py-attr docutils literal notranslate"><span class="pre">dataset</span></code> is an <code class="xref py py-class docutils literal notranslate"><span class="pre">IterableDataset</span></code>,
+it instead returns an estimate based on <code class="docutils literal notranslate"><span class="pre">len(dataset)</span> <span class="pre">/</span> <span class="pre">batch_size</span></code>, with proper
+rounding depending on <code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code>, regardless of multi-process loading
+configurations. This represents the best guess PyTorch can make because PyTorch
+trusts user <code class="xref py py-attr docutils literal notranslate"><span class="pre">dataset</span></code> code in correctly handling multi-process
+loading to avoid duplicate data.</p>
+<p>However, if sharding results in multiple workers having incomplete last batches,
+this estimate can still be inaccurate, because (1) an otherwise complete batch can
+be broken into multiple ones and (2) more than one batch worth of samples can be
+dropped when <code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code> is set. Unfortunately, PyTorch can not detect such
+cases in general.</p>
+<p>See <a href="#id1"><span class="problematic" id="id2">`Dataset Types`_</span></a> for more details on these two types of datasets and how
+<code class="xref py py-class docutils literal notranslate"><span class="pre">IterableDataset</span></code> interacts with
+<a href="#id3"><span class="problematic" id="id4">`Multi-process data loading`_</span></a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>See <span class="xref std std-ref">reproducibility</span>, and <span class="xref std std-ref">dataloader-workers-random-seed</span>, and
+<span class="xref std std-ref">data-loading-randomness</span> notes for random seed related questions.</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="deepdown.Dataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">Dataset</span></span><a class="headerlink" href="#deepdown.Dataset" title="Link to this definition"></a></dt>
+<dd><p>An abstract class representing a <a class="reference internal" href="#deepdown.Dataset" title="deepdown.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>.</p>
+<p>All datasets that represent a map from keys to data samples should subclass
+it. All subclasses should overwrite <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getitem__()</span></code>, supporting fetching a
+data sample for a given key. Subclasses could also optionally overwrite
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">__len__()</span></code>, which is expected to return the size of the dataset by many
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Sampler</span></code> implementations and the default options
+of <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code>. Subclasses could also
+optionally implement <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getitems__()</span></code>, for speedup batched samples
+loading. This method accepts list of indices of samples of batch and returns
+list of samples.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> by default constructs an index
+sampler that yields integral indices.  To make it work with a map-style
+dataset with non-integral indices/keys, a custom sampler must be provided.</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="deepdown.EvaluatorClass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">EvaluatorClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validation_loader</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.EvaluatorClass" title="Link to this definition"></a></dt>
+<dd><p>EvaluatorClass is designed to evaluate a machine learning model’s performance on training and validation datasets.
+It computes various error metrics such as R-squared (R2) and Relative Absolute Error (RAE) for both datasets.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.EvaluatorClass.error_metrics">
+<span class="sig-name descname"><span class="pre">error_metrics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.EvaluatorClass.error_metrics" title="Link to this definition"></a></dt>
+<dd><p>Calculate and store error metrics for training and validation datasets.
+This method computes the R-squared (R2) and Relative Absolute Error (RAE)
+metrics for both the training and validation datasets. The predictions are
+made using the <cite>pressure_field</cite> method, and the metrics are calculated
+using the <cite>r2_score_numpy</cite> and <cite>rae_score_numpy</cite> functions.
+The following attributes are updated:
+- r2_list_train: List of R2 scores for the training dataset.
+- rae_train: Average RAE score for the training dataset.
+- r2_avg_train: Average R2 score for the training dataset.
+- r2_std_train: Standard deviation of R2 scores for the training dataset.
+- r2_list_validation: List of R2 scores for the validation dataset.
+- rae_validation: Average RAE score for the validation dataset.
+- r2_avg_validation: Average R2 score for the validation dataset.
+- r2_std_validation: Standard deviation of R2 scores for the validation dataset.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.EvaluatorClass.pressure_field">
+<span class="sig-name descname"><span class="pre">pressure_field</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.EvaluatorClass.pressure_field" title="Link to this definition"></a></dt>
+<dd><p>Computes and stores the pressure field predictions for both the training and validation datasets.
+This method sets the model to evaluation mode and makes predictions on the training and validation
+datasets using the provided data loaders. The predictions and targets are then scaled and stored
+as attributes of the class instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="deepdown.Hdf5Dataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">Hdf5Dataset</span></span><a class="headerlink" href="#deepdown.Hdf5Dataset" title="Link to this definition"></a></dt>
+<dd><p>A PyTorch Dataset class for loading data from an HDF5 file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.Hdf5Dataset.initialise">
+<span class="sig-name descname"><span class="pre">initialise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.Hdf5Dataset.initialise" title="Link to this definition"></a></dt>
+<dd><p>Initializes the dataset by loading the file and setting up transformations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – The path to the dataset file.</p></li>
+<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform to apply to the
+data. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.Hdf5Dataset.load_data">
+<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.Hdf5Dataset.load_data" title="Link to this definition"></a></dt>
+<dd><p>Loads data from an HDF5 file at the specified index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The index of the data to load.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A tuple containing the input data and</dt><dd><p>output data at the specified index.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="deepdown.Plot2D">
+<span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">Plot2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_over_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.Plot2D" title="Link to this definition"></a></dt>
+<dd><p>Plot 2D slices or the mean over the z-axis of the 3D array at specified depth and return the figure for inline display in Jupyter Notebook.
+axis = 0: around x
+axis = 1: around y
+axis = 2: around z
+mean_over_z: If True, compute and plot the mean values over the z-axis.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="deepdown.Plot3D">
+<span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">Plot3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.Plot3D" title="Link to this definition"></a></dt>
+<dd><p>Plot a 3D dataset based on various options and return the figure for inline display in Jupyter Notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>np.array</em>) – 3D numpy array</p></li>
+<li><p><strong>options</strong> (<em>Dict</em>) – <ul>
+<li><p>filter: Drop values smaller than mean + num_stddev * std. Takes a float value.</p></li>
+<li><p>sample: Randomly remove specified percentage of data. Takes a float value between 0 and 1.</p></li>
+<li><p>nozero: Drop 0 values. Takes True.</p></li>
+<li><p>fix_range: Fix the color range. Takes a list of two float values.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="deepdown.PlotLoss">
+<span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">PlotLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">history</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.PlotLoss" title="Link to this definition"></a></dt>
+<dd><p>Plot the loss and accuracy of the training and validation sets.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="deepdown.PlotLosses">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">PlotLosses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">BO</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['MatplotlibPlot',</span> <span class="pre">'ExtremaPrinter']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'notebook'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.PlotLosses" title="Link to this definition"></a></dt>
+<dd><p>Class collect metrics from the training engine and send it to plugins, when send is called</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>outputs</strong> – list of output modules: objects inheriting from BaseOutput
+or strings for livelossplot built-in output methods with default parameters</p></li>
+<li><p><strong>mode</strong> – Options: ‘notebook’ or ‘script’ - some of outputs need to change some behaviors,
+depending on the working environment</p></li>
+<li><p><strong>**kwargs</strong> – key-arguments which are passed to MainLogger constructor</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.PlotLosses.draw" title="Link to this definition"></a></dt>
+<dd><p>Send method substitute from old livelossplot api</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.reset_outputs">
+<span class="sig-name descname"><span class="pre">reset_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#deepdown.PlotLosses" title="livelossplot.plot_losses.PlotLosses"><span class="pre">PlotLosses</span></a></span></span><a class="headerlink" href="#deepdown.PlotLosses.reset_outputs" title="Link to this definition"></a></dt>
+<dd><p>Resets all outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Plotlosses object (so it works for chaining)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.send">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.PlotLosses.send" title="Link to this definition"></a></dt>
+<dd><p>Method will send logs to every output class</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.to_bokeh">
+<span class="sig-name descname"><span class="pre">to_bokeh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#deepdown.PlotLosses" title="livelossplot.plot_losses.PlotLosses"><span class="pre">PlotLosses</span></a></span></span><a class="headerlink" href="#deepdown.PlotLosses.to_bokeh" title="Link to this definition"></a></dt>
+<dd><p>Appends outputs.BokehPlot output, with specified parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – keyword arguments for BokehPlot</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Plotlosses object (so it works for chaining)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.to_extrema_printer">
+<span class="sig-name descname"><span class="pre">to_extrema_printer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#deepdown.PlotLosses" title="livelossplot.plot_losses.PlotLosses"><span class="pre">PlotLosses</span></a></span></span><a class="headerlink" href="#deepdown.PlotLosses.to_extrema_printer" title="Link to this definition"></a></dt>
+<dd><p>Appends outputs.ExtremaPrinter output, with specified parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – keyword arguments for ExtremaPrinter</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Plotlosses object (so it works for chaining)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.to_matplotlib">
+<span class="sig-name descname"><span class="pre">to_matplotlib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#deepdown.PlotLosses" title="livelossplot.plot_losses.PlotLosses"><span class="pre">PlotLosses</span></a></span></span><a class="headerlink" href="#deepdown.PlotLosses.to_matplotlib" title="Link to this definition"></a></dt>
+<dd><p>Appends outputs.MatplotlibPlot output, with specified parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – keyword arguments for MatplotlibPlot</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Plotlosses object (so it works for chaining)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.to_neptune">
+<span class="sig-name descname"><span class="pre">to_neptune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#deepdown.PlotLosses" title="livelossplot.plot_losses.PlotLosses"><span class="pre">PlotLosses</span></a></span></span><a class="headerlink" href="#deepdown.PlotLosses.to_neptune" title="Link to this definition"></a></dt>
+<dd><p>Appends outputs.NeptuneLogger output, with specified parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – keyword arguments for NeptuneLogger</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Plotlosses object (so it works for chaining)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.to_tensorboard">
+<span class="sig-name descname"><span class="pre">to_tensorboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#deepdown.PlotLosses" title="livelossplot.plot_losses.PlotLosses"><span class="pre">PlotLosses</span></a></span></span><a class="headerlink" href="#deepdown.PlotLosses.to_tensorboard" title="Link to this definition"></a></dt>
+<dd><p>Appends outputs.TensorboardLogger output, with specified parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – keyword arguments for TensorboardLogger</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Plotlosses object (so it works for chaining)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.to_tensorboard_tf">
+<span class="sig-name descname"><span class="pre">to_tensorboard_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#deepdown.PlotLosses" title="livelossplot.plot_losses.PlotLosses"><span class="pre">PlotLosses</span></a></span></span><a class="headerlink" href="#deepdown.PlotLosses.to_tensorboard_tf" title="Link to this definition"></a></dt>
+<dd><p>Appends outputs.TensorboardTFLogger output, with specified parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – keyword arguments for TensorboardTFLogger</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Plotlosses object (so it works for chaining)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.PlotLosses.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.PlotLosses.update" title="Link to this definition"></a></dt>
+<dd><p>update logs with arguments that will be passed to main logger</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="deepdown.ResNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">ResNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.ResNet" title="Link to this definition"></a></dt>
+<dd><p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="deepdown.ResNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#deepdown.ResNet.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="deepdown.SimDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">SimDataset</span></span><a class="headerlink" href="#deepdown.SimDataset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="deepdown.make_subplots">
+<span class="sig-prename descclassname"><span class="pre">deepdown.</span></span><span class="sig-name descname"><span class="pre">make_subplots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_xaxes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_yaxes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_cell</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'top-left'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizontal_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subplot_titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_widths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_heights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Figure</span></span></span><a class="headerlink" href="#deepdown.make_subplots" title="Link to this definition"></a></dt>
+<dd><p>Return an instance of plotly.graph_objs.Figure with predefined subplots
+configured in ‘layout’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rows</strong> (<em>int</em><em> (</em><em>default 1</em><em>)</em>) – Number of rows in the subplot grid. Must be greater than zero.</p></li>
+<li><p><strong>cols</strong> (<em>int</em><em> (</em><em>default 1</em><em>)</em>) – Number of columns in the subplot grid. Must be greater than zero.</p></li>
+<li><p><strong>shared_xaxes</strong> (<em>boolean</em><em> or </em><em>str</em><em> (</em><em>default False</em><em>)</em>) – <p>Assign shared (linked) x-axes for 2D cartesian subplots</p>
+<blockquote>
+<div><ul>
+<li><p>True or ‘columns’: Share axes among subplots in the same column</p></li>
+<li><p>’rows’: Share axes among subplots in the same row</p></li>
+<li><p>’all’: Share axes across all subplots in the grid.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>shared_yaxes</strong> (<em>boolean</em><em> or </em><em>str</em><em> (</em><em>default False</em><em>)</em>) – <p>Assign shared (linked) y-axes for 2D cartesian subplots</p>
+<blockquote>
+<div><ul>
+<li><p>’columns’: Share axes among subplots in the same column</p></li>
+<li><p>True or ‘rows’: Share axes among subplots in the same row</p></li>
+<li><p>’all’: Share axes across all subplots in the grid.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>start_cell</strong> (<em>'bottom-left'</em><em> or </em><em>'top-left'</em><em> (</em><em>default 'top-left'</em><em>)</em>) – <p>Choose the starting cell in the subplot grid used to set the
+domains_grid of the subplots.</p>
+<blockquote>
+<div><ul>
+<li><dl class="simple">
+<dt>’top-left’: Subplots are numbered with (1, 1) in the top</dt><dd><p>left corner</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>’bottom-left’: Subplots are numbererd with (1, 1) in the bottom</dt><dd><p>left corner</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>print_grid</strong> (<em>boolean</em><em> (</em><em>default True</em><em>)</em><em>:</em>) – If True, prints a string representation of the plot grid.  Grid may
+also be printed using the <cite>Figure.print_grid()</cite> method on the
+resulting figure.</p></li>
+<li><p><strong>horizontal_spacing</strong> (<em>float</em><em> (</em><em>default 0.2 / cols</em><em>)</em>) – <p>Space between subplot columns in normalized plot coordinates. Must be
+a float between 0 and 1.</p>
+<p>Applies to all columns (use ‘specs’ subplot-dependents spacing)</p>
+</p></li>
+<li><p><strong>vertical_spacing</strong> (<em>float</em><em> (</em><em>default 0.3 / rows</em><em>)</em>) – <p>Space between subplot rows in normalized plot coordinates. Must be
+a float between 0 and 1.</p>
+<p>Applies to all rows (use ‘specs’ subplot-dependents spacing)</p>
+</p></li>
+<li><p><strong>subplot_titles</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – <p>Title of each subplot as a list in row-major ordering.</p>
+<p>Empty strings (“”) can be included in the list if no subplot title
+is desired in that space so that the titles are properly indexed.</p>
+</p></li>
+<li><p><strong>specs</strong> (<em>list</em><em> of </em><em>lists</em><em> of </em><em>dict</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – <p>Per subplot specifications of subplot type, row/column spanning, and
+spacing.</p>
+<p>ex1: specs=[[{}, {}], [{‘colspan’: 2}, None]]</p>
+<p>ex2: specs=[[{‘rowspan’: 2}, {}], [None, {}]]</p>
+<ul>
+<li><p>Indices of the outer list correspond to subplot grid rows
+starting from the top, if start_cell=’top-left’,
+or bottom, if start_cell=’bottom-left’.
+The number of rows in ‘specs’ must be equal to ‘rows’.</p></li>
+<li><p>Indices of the inner lists correspond to subplot grid columns
+starting from the left. The number of columns in ‘specs’
+must be equal to ‘cols’.</p></li>
+<li><p>Each item in the ‘specs’ list corresponds to one subplot
+in a subplot grid. (N.B. The subplot grid has exactly ‘rows’
+times ‘cols’ cells.)</p></li>
+<li><p>Use None for a blank a subplot cell (or to move past a col/row span).</p></li>
+<li><p>Note that specs[0][0] has the specs of the ‘start_cell’ subplot.</p></li>
+<li><dl>
+<dt>Each item in ‘specs’ is a dictionary.</dt><dd><p>The available keys are:
+* type (string, default ‘xy’): Subplot type. One of</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>’xy’: 2D Cartesian subplot type for scatter, bar, etc.</p></li>
+<li><p>’scene’: 3D Cartesian subplot for scatter3d, cone, etc.</p></li>
+<li><p>’polar’: Polar subplot for scatterpolar, barpolar, etc.</p></li>
+<li><p>’ternary’: Ternary subplot for scatterternary</p></li>
+<li><p>’map’: Map subplot for scattermap</p></li>
+<li><p>’mapbox’: Mapbox subplot for scattermapbox</p></li>
+<li><dl class="simple">
+<dt>’domain’: Subplot type for traces that are individually</dt><dd><p>positioned. pie, parcoords, parcats, etc.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>trace type: A trace type which will be used to determine</dt><dd><p>the appropriate subplot type for that trace</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>secondary_y (bool, default False): If True, create a secondary</dt><dd><p>y-axis positioned on the right side of the subplot. Only valid
+if type=’xy’.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>colspan (int, default 1): number of subplot columns</dt><dd><p>for this subplot to span.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>rowspan (int, default 1): number of subplot rows</dt><dd><p>for this subplot to span.</p>
+</dd>
+</dl>
+</li>
+<li><p>l (float, default 0.0): padding left of cell</p></li>
+<li><p>r (float, default 0.0): padding right of cell</p></li>
+<li><p>t (float, default 0.0): padding right of cell</p></li>
+<li><p>b (float, default 0.0): padding bottom of cell</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Note: Use ‘horizontal_spacing’ and ‘vertical_spacing’ to adjust
+the spacing in between the subplots.</p></li>
+</ul>
+</p></li>
+<li><p><strong>insets</strong> (<em>list</em><em> of </em><em>dict</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em><em>:</em>) – <p>Inset specifications.  Insets are subplots that overlay grid subplots</p>
+<ul>
+<li><dl class="simple">
+<dt>Each item in ‘insets’ is a dictionary.</dt><dd><p>The available keys are:</p>
+<ul>
+<li><dl class="simple">
+<dt>cell (tuple, default=(1,1)): (row, col) index of the</dt><dd><p>subplot cell to overlay inset axes onto.</p>
+</dd>
+</dl>
+</li>
+<li><p>type (string, default ‘xy’): Subplot type</p></li>
+<li><dl class="simple">
+<dt>l (float, default=0.0): padding left of inset</dt><dd><p>in fraction of cell width</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>w (float or ‘to_end’, default=’to_end’) inset width</dt><dd><p>in fraction of cell width (‘to_end’: to cell right edge)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>b (float, default=0.0): padding bottom of inset</dt><dd><p>in fraction of cell height</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>h (float or ‘to_end’, default=’to_end’) inset height</dt><dd><p>in fraction of cell height (‘to_end’: to cell top edge)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+<li><p><strong>column_widths</strong> (<em>list</em><em> of </em><em>numbers</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – <p>list of length <cite>cols</cite> of the relative widths of each column of subplots.
+Values are normalized internally and used to distribute overall width
+of the figure (excluding padding) among the columns.</p>
+<p>For backward compatibility, may also be specified using the
+<cite>column_width</cite> keyword argument.</p>
+</p></li>
+<li><p><strong>row_heights</strong> (<em>list</em><em> of </em><em>numbers</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – <p>list of length <cite>rows</cite> of the relative heights of each row of subplots.
+If start_cell=’top-left’ then row heights are applied top to bottom.
+Otherwise, if start_cell=’bottom-left’ then row heights are applied
+bottom to top.</p>
+<p>For backward compatibility, may also be specified using the
+<cite>row_width</cite> kwarg. If specified as <cite>row_width</cite>, then the width values
+are applied from bottom to top regardless of the value of start_cell.
+This matches the legacy behavior of the <cite>row_width</cite> argument.</p>
+</p></li>
+<li><p><strong>column_titles</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – list of length <cite>cols</cite> of titles to place above the top subplot in
+each column.</p></li>
+<li><p><strong>row_titles</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – list of length <cite>rows</cite> of titles to place on the right side of each
+row of subplots. If start_cell=’top-left’ then row titles are
+applied top to bottom. Otherwise, if start_cell=’bottom-left’ then
+row titles are applied bottom to top.</p></li>
+<li><p><strong>x_title</strong> (<em>str</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – Title to place below the bottom row of subplots,
+centered horizontally</p></li>
+<li><p><strong>y_title</strong> (<em>str</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – Title to place to the left of the left column of subplots,
+centered vertically</p></li>
+<li><p><strong>figure</strong> (<em>go.Figure</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – If None, a new go.Figure instance will be created and its axes will be
+populated with those corresponding to the requested subplot geometry and
+this new figure will be returned.
+If a go.Figure instance, the axes will be added to the
+layout of this figure and this figure will be returned. If the figure
+already contains axes, they will be overwritten.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Example 1:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Stack two subplots vertically, and add a scatter trace to each</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is the format of your plot grid:
+[ (1,1) xaxis1,yaxis1 ]
+[ (2,1) xaxis2,yaxis2 ]</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_scatter</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_scatter</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+</pre></div>
+</div>
+<p>or see Figure.append_trace</p>
+<p>Example 2:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Stack a scatter plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shared_xaxes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is the format of your plot grid:
+[ (1,1) xaxis1,yaxis1 ]
+[ (2,1) xaxis2,yaxis2 ]</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_scatter</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_scatter</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+</pre></div>
+</div>
+<p>Example 3:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># irregular subplot layout (more examples below under &#39;specs&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">specs</span><span class="o">=</span><span class="p">[[{},</span> <span class="p">{}],</span>
+<span class="gp">... </span>                    <span class="p">[{</span><span class="s1">&#39;colspan&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="kc">None</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>This is the format of your plot grid:
+[ (1,1) xaxis1,yaxis1 ]  [ (1,2) xaxis2,yaxis2 ]
+[ (2,1) xaxis3,yaxis3           -              ]</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+</pre></div>
+</div>
+<p>Example 4:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># insets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">insets</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;cell&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">}])</span>
+</pre></div>
+</div>
+<p>This is the format of your plot grid:
+[ (1,1) xaxis1,yaxis1 ]</p>
+<p>With insets:
+[ xaxis2,yaxis2 ] over [ (1,1) xaxis1,yaxis1 ]</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> 
+<span class="go">Figure(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">xaxis</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="s1">&#39;y2&#39;</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+</pre></div>
+</div>
+<p>Example 5:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># include subplot titles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subplot_titles</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Plot 1&#39;</span><span class="p">,</span><span class="s1">&#39;Plot 2&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This is the format of your plot grid:
+[ (1,1) x1,y1 ]
+[ (2,1) x2,y2 ]</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="go">Figure(...)</span>
+</pre></div>
+</div>
+<p>Example 6:</p>
+<p>Subplot with mixed subplot types</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">specs</span><span class="o">=</span><span class="p">[[{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;xy&#39;</span><span class="p">},</span>    <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;polar&#39;</span><span class="p">}],</span>
+<span class="gp">... </span>                           <span class="p">[{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;scene&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ternary&#39;</span><span class="p">}]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">add_traces</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+<span class="gp">... </span>     <span class="n">go</span><span class="o">.</span><span class="n">Scatterpolar</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">]),</span>
+<span class="gp">... </span>     <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span>
+<span class="gp">... </span>     <span class="n">go</span><span class="o">.</span><span class="n">Scatterternary</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+<span class="gp">... </span>                       <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+<span class="gp">... </span>                       <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])],</span>
+<span class="gp">... </span>    <span class="n">rows</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> 
+<span class="go">Figure(...)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
