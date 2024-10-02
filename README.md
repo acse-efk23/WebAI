@@ -41,10 +41,14 @@ cd web_plugins
 pip install .
 ```
 
-8. Run the application (viewed in local host):
+8. Select the browser to view the web app:
 ```bash
 cd ..
 webviz preferences --browser chrome
+```
+
+9. Run the application (viewed in local host):
+```bash
 webviz build configuration.yaml
 ```
 
