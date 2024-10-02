@@ -3,18 +3,6 @@ This web application features a range of AI functionalities, including data load
 
 Function API can be found [here](https://acse-efk23.github.io/WebAI/).
 
-### Deep Learning Architecture
----
-![Neural Network Architecture Figure](docs/images/arch.jpg)
-
-### Comparison with Physics-Based Simulation
----
-![AI Predictions vs Physics Simulation Figure](docs/images/comparison.png)
-
-### Web Application
----
-![Web Application Gif](docs/images/web.gif)
-
 ### Usage
 ---
 1. Clone the repository:
@@ -59,6 +47,18 @@ cd ..
 webviz preferences --browser chrome
 webviz build configuration.yaml
 ```
+
+### Web Application
+---
+![Web Application Gif](docs/images/web.gif)
+
+### Deep Learning Architecture
+---
+![Neural Network Architecture Figure](docs/images/arch.jpg)
+
+### Comparison with Physics-Based Simulation
+---
+![AI Predictions vs Physics Simulation Figure](docs/images/comparison.png)
 
 ### Acknowledgements
 ---
